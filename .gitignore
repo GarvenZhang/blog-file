@@ -3,3 +3,7 @@ upload/
 dist/
 .idea/
 .DS_Store/
+
+## 安全
+config.js
+auth/
