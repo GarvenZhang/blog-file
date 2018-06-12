@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>JM_S.H.I.E.L.D</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="js/garModule/garCss.css">
+</head>
+<body >
+    <!-- bg start -->
+    <div id="loginBgBox">
+        <img id="loginBg" src="img/index/loginBg.jpg" height="" width="" alt="loginBackground" >
+    </div>
+    <!-- bg over -->
+    <!-- nav start-->
+    <div id="navBox">
+
+    </div>
+    <!-- nav over-->
+    <!-- cte start -->
+    <div id="cteBox">
+        <!-- login start -->
+        <div id="log_box"  >
+            <form class="loginForm" autocomplete="on" action="" name="loginForm">
+                <p class="account gar-terminal-like" >
+                    <label for="account">ACCOUNT:</label><input required id="account" type="text" autofocus size="30" maxlength="20" name="account" placeholder="">
+                </p>
+                <p class="loginPwd gar-terminal-like" >
+                    <label for="loginPwd">PASSWORD:</label><input id="loginPwd" required type="password" size="25" maxlength="20" name="pwd" placeholder="">
+                </p>
+                <div class="clearfix">
+                    <input class="fl" type="reset" value="RESET" name="resetBtn"><input class="fr" type="button" value="LOGIN" name="loginBtn">
+                </div>
+                <div  class="clearfix smallHelp">
+                    <p class="fl">
+                        <input type="checkbox" id="keepInfo" checked value="yes" name="keepInfo">
+                        <label for="keepInfo" >KEEP ACCOUNT AND PASSWORD<i></i></label>
+                    </p>
+                    <a class="fl" href="javascript:;">FORGET PASSWORD</a>
+                    <a class="fl" id="registerSkip" href="entering.html">REGISTER</a>
+                </div>
+            </form>
+        </div>
+        <!-- login over -->
+    </div>
+    <!-- register start -->
+    <div id="reg_box" class="hide">
+        <form action=""  autocomplete="off" name="registerForm">
+            <p class="username  gar-terminal-like" >
+                <label for="username">USERNAME:</label><input pattern="" autofocus required type="text" id="username" maxlength="20" placeholder="">
+            </p>
+            <p class="realname  gar-terminal-like">
+                <label for="realname">REALNAME:</label><input required type="text" id="realname" size="25" placeholder="">
+            </p>
+            <p class="pwd gar-terminal-like" >
+                <label for="pwd">PASSWORD:</label><input pattern="" required type="password" id="pwd" maxlength="15" placeholder="">
+            </p>
+            <div class="safetyIntensity">
+                <i class="safetyIndex_1"></i><i class="safetyIndex_2"></i><i class="safetyIndex_3"></i><i class="safetyIndex_4"></i>
+            </div>
+            <p class="confirmPwd gar-terminal-like">
+                <label for="confirm">CONFIRM:</label><input required size="30" type="password" id="confirm" placeholder="">
+            </p>
+            <p class="email gar-terminal-like">
+                <label for="email">EMAIL:</label><input required type="email" size="30" id="email" placeholder="">
+            </p>
+            <p class="questionForSafety gar-canvasModalKey" id="questionForSafety">QUESTION&ANSWER</p>
+            <div class="gar-canvasModal " >
+                <div class="gar-modalBg"></div>
+                <div class="gar-modalBody">
+                    <small class="tips">TIPS:<small>PLEASE FILL A QUESTION AND ANSWER TO FIND YOUR ACCOUNT!</small></small>
+                    <p class="que gar-terminal-like">
+                        <label for="que">QUESTION:</label><input type="text" id="que" required>
+                    </p>
+                    <p class="ans gar-terminal-like">
+                        <label for="ans">ANSWER:</label><input type="text" id="ans" required >
+                    </p>
+                    <p class="clearfix">
+                        <button type="button">CONFIRM</button>
+                    </p>
+                </div>
+            </div>
+            <p class="phoneNum gar-terminal-like">
+                <label for="phoneNum">TEL:</label><input type="tel" id="phoneNum" pattern="" placeholder="">
+            </p>
+            <p class="clearfix">
+                <input class="fr" type="button"  value="REGISTER" >
+                <input class="fr" type="button" value="BACK" id="backToLogin">
+            </p>
+        </form>
+    </div>
+    <!-- register over -->
+    <!-- cte over -->
+    <!-- footer start -->
+    <div id="footerBox">
+
+    </div>
+    <!-- footer over -->
+    <!-- outter script -->
+    <script  src="js/ownlibrary.js"></script>
+    <script src="js/index.js"></script>
+    <script  src="js/garModule/garJs.js"></script>
+</body>
+</html>

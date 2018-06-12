@@ -1,0 +1,447 @@
+/*================================================terminal-like type======================================================*/
+.inline-block{
+    display: inline-block;
+}
+.relative{
+    position: relative;
+}
+.farToUnseen{
+    position: absolute;
+    left:-9999px;
+}
+.gar-terminal-like input:focus+span>b{
+    position: absolute;
+    top:-1px;
+    right:-12px;
+    width: 8px;
+    height: 20px;
+    color: hsla(0, 0%, 0%, 0);
+    background: #2c8229;
+}
+
+/*================================================modal======================================================*/
+.modal{
+    min-width:500px;
+    min-height: 200px;
+    position: absolute;
+    top:50%;
+    left:50%;
+    font:500 24px/1 courier,courier_ser;
+    color: #2c8229;
+    border:2px solid #2C8229;
+    padding:2px;
+    background: rgba(0,0,0,.6);
+}
+.modal_hand{
+    width:calc(100%-2px);
+    height:100%;
+    text-align: center;
+    border:2px solid #2c8229;
+    background: #004100;
+}
+.modal_hand span:last-child{
+    float: right;
+    padding:0 5px;
+    border-left:2px solid #2c8229;
+}
+
+/*================================================paint triangle by pure css ======================================================*/
+.triangle{
+    position: absolute;
+    top:-2px;/* .modal's border-top-width */
+    left:-2px;/* .modal/s border-left-width */
+    width:0;
+    height:0;
+    border-style:solid ;
+    border-width:0 0 14px 14px ;/* half of 14px:7px in fact ; >.innerTriangle's border-width for show its border-color */
+    border-color: transparent transparent transparent #2c8229; /* border-left-color must be equal to .modal's border-color */
+}
+.innerTriangle{
+    position: absolute;
+    top: -1px;
+    left:-15px;
+    width:0;
+    height:0;
+    border-style:solid;
+    border-width:0 0 13px 13px;
+    border-color: transparent transparent transparent black;/* border-left-color must be equal to .modal's father element's bgColor so that .modal's border-color can be clouded */
+}
+.gar-triangleWrap{
+    display: inline-block;
+    width:9px;
+    height:12px;
+}
+.gar-triangleU,.gar-triangleL,.gar-triangleB,.gar-triangleR{
+    display: inline-block;
+    width:0;
+    height:0;
+    border-style:solid;
+}
+.gar-triangleU{
+    border-width:0 5px 8px;
+    border-color: transparent transparent #1b6a18 transparent;
+}
+.gar-triangleU:active{
+    border-color: transparent transparent rgb(44,170,41) transparent;
+}
+.gar-triangleL{
+    border-width:5px 8px 5px 0 ;
+    border-color: transparent #1b6118 transparent  transparent ;
+}
+.gar-triangleL:active{
+    border-color: transparent rgb(44,170,41) transparent  transparent ;
+}
+.gar-triangleB{
+    border-width: 8px 5px 0 5px;
+    border-color:#1b7718 transparent transparent  transparent;
+}
+.gar-triangleB:active{
+    border-color:rgb(44,170,41) transparent transparent  transparent;
+}
+.gar-triangleR{
+    border-width:5px 0 5px 8px;
+    border-color: transparent transparent transparent #1b6118 ;
+}
+.gar-triangleR:active{
+    border-color: transparent transparent transparent rgb(44,170,41) ;
+}
+/*================================================gar-canvasModal======================================================*/
+.gar-canvasModal{
+    min-width:500px;
+    background: #000;
+    position: absolute;
+    top:50%;
+    left:50%;
+    z-index:9000;
+}
+.gar-modalBg{
+    width:100%;
+    height:100%;
+    text-align: center;
+    z-index:-1;
+}
+.gar-dragArea{
+    display: inline-block;
+    position: absolute;
+    top:7px;
+    left:11px;
+    width:91%;
+    height:22px;
+    font:20px/22px courier,courier_ser;
+    color: rgb(44, 170, 42);
+    background: transparent;
+}
+.gar-modalBg>a{
+    display: inline-block;
+    width:20px;
+    height:20px;
+    font:20px/1 courier,courier_ser;
+    color: #2caa2a;
+    background: transparent;
+    position: absolute;
+    top:8px;
+    right:9px;
+}
+.gar-modalBg>a:active{
+    color: rgb(44,200,42);
+    text-shadow: 1px 1px 2px ;
+}
+.gar-modalBody{
+    position: absolute;
+    top:45px;
+    left:18px;
+    min-width:460px;
+    font:20px/1 courier,courier_ser;
+    color: rgb(44,170,42);
+    z-index:9001;
+}
+.gar-modalBody>p,.gar-modalBody>small{
+    margin-bottom:15px;
+}
+.gar-modalBody .tips{
+    display: inline-block;
+    font-size: 12px;/* content must <=55 words */
+    border-bottom: solid 1px rgb(44,190,42);
+}
+.gar-modalBody>p:last-child{
+    text-align: right;
+}
+.gar-modalBody button{
+    display: inline-block;
+    height:20px;
+    font:lighter 20px/1 courier,courier_ser;
+    color: #2C8229;
+    background: transparent;
+    outline:#2C8229 1px solid ;
+    outline-offset: 5px;
+    border:none;
+}
+.gar-modalBody button:hover{
+    text-shadow: 0 0 .5em #2c8229;
+    outline-style:dotted;
+}
+.gar-modalBody table{
+    border-collapse:collapse;
+}
+.gar-modalBody td,.gar-modalBody th{
+    border: dashed 2px;
+    margin:1px;
+    padding:3px 20px;
+}
+.unseen{
+    visibility: hidden;
+}
+.modalDefault{
+    transform: scale(.01);
+}
+.modalOpen,.modalClose,.modalDefault{
+    -webkit-transition: transform .2s ease-in 0s;
+    -moz-transition: transform .2s ease-in 0s;
+    -ms-transition: transform .2s ease-in 0s;
+    -o-transition: transform .2s ease-in 0s;
+    transition: transform .2s ease-in 0s;
+}
+.modalOpen{
+    transform: scale(1);
+}
+.modalClose{
+    transform: scale(.01);
+}
+
+/*================================================ progress bar ======================================================*/
+.gar-progressBar{
+    width:500px;
+    height:200px;
+    color: #2c8229;
+    text-align: center;
+    padding:30px 20px 10px;
+    border:3px solid #2c8229;
+    border-top-width:20px;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-250px,-100px);
+}
+.gar-progressBar>p{
+    font-size:40px;
+    margin-bottom:70px;
+}
+.gar-progressBar>small{
+    font-size: 14px;
+}
+.gar-progressBar>div{
+    width:500px;
+    height:53px;
+    margin-top:10px;
+    background: transparent;
+}
+.gar-progressBar i{
+    display: inline-block;
+    width:20px;
+    height:35px;
+    margin:0 2px;
+    background: transparent;
+}
+.progressBar_show{
+    background: #2c8229!important;
+}
+.closeProgressBar{
+    transform: skew(89deg,0deg);
+}
+.noscroll{
+    overflow: hidden;
+}
+
+/*================================================ gar-table ======================================================*/
+.gar-table{
+    min-width:100%;
+    margin:0 auto;
+}
+.gar-table th{
+    position: relative;
+}
+.gar-table th:nth-of-type(n):hover>i{
+    display: inline-block;
+}
+.gar-table th>i:first-child{
+    display: none;
+    position: absolute;
+    top:17%;
+    right:3%;
+}
+.gar-table th>i:last-child{
+    display: none;
+    position: absolute;
+    bottom:18%;
+    right:3%;
+}
+
+/*================================================ gar-pagination ======================================================*/
+.gar-pagination{
+    text-align: center;
+}
+.gar-pagination a{
+    font:1em/17px courier,courier_ser;
+    color: #2c8229;
+}
+.gar-pagination>a:hover{
+    color: rgb(44, 190, 42);
+}
+.gar-pagination>div{
+    display: inline-block;
+}
+.gar-pagination>div>a:active{
+    color: rgb(44,190,42);
+}
+.gar-pagination>div:nth-last-of-type(1){
+    position: relative;
+}
+.gar-pagination>div:nth-last-of-type(1)>input{
+    background: transparent;
+    /*color: rgb(44,190,42);*/
+}
+.gar-pagination>div:nth-last-of-type(1)>input:focus~ul{
+    display: block!important;
+}
+.gar-pagination>div:nth-last-of-type(1) ul{
+    position: absolute;
+    bottom: 20px;
+    left:1px;
+    width: 20px;
+    background: #ccc;
+    border: 1px solid #000;
+}
+.gar-pagination>div:nth-last-of-type(1) ul:active{
+    display: block!important;
+}
+.gar-pagination>div:nth-last-of-type(1) li{
+    /*border-top:1px dotted #2c8229;*/
+    border-bottom:1px dotted #000;
+}
+.gar-pagination>div:nth-last-of-type(1) li:hover{
+    color: rgb(44,190,42);
+    font-weight:bold;
+    cursor: default;
+}
+.gar-pagination small{
+    font-size: 12px;
+    line-height:17px;
+}
+.gar-pagination .garPStatus{
+    color: #000;
+    font-weight: 800;
+    text-shadow: #000 0 0 9px;
+    cursor: default;
+}
+
+/*================================================ gar-pullDownMenu ======================================================*/
+/*.gar-pullDownMenu>ul {
+    max-height:20px;
+    margin-bottom:5px;
+    overflow: hidden;
+}
+.gar-pullDownMenu>ul>li:not(:first-child){
+    opacity:0;
+}
+.gar-pullDownMenu>input{
+    position: absolute;
+    left:-999px;
+}
+.gar-pullDownMenu>ul:hover{
+    max-height: 400px;
+    overflow: visible;
+    transition:all 1s ease-out 0s;
+}
+.gar-pullDownMenu>ul:hover>li:not(:first-child){
+    opacity:1;
+    transition:all 1s ease-out 0s;
+}
+.gar-pullDownMenu>ul>li:first-child a{
+    display: block;
+    height:20px;
+    font:800 13px/15px '';
+    cursor: default;
+}
+.gar-pullDownMenu>ul>li:first-child a:after{
+    content: 'V';
+    font:800 10px/1 'Microsoft YaHei';
+    float: right;
+    margin-right:40px;
+}*/
+
+/*================================================ gar-formSelection ======================================================*/
+/*.content article.fr>h2{
+    font: 800 18px/2 '';
+    text-align: center;
+    border-bottom:5px #C8925C solid;
+    margin-bottom: 10px;
+}
+.gar-formSelection{
+    margin:0 5px;
+    color: rgb(125, 125, 125);
+}
+.gar-formSelection li {
+    font:800 1.2em/1.5 '';
+    list-style: decimal inside;
+    padding:10px 0;
+}
+.gar-formSelection li:nth-of-type(2n-1){
+    background: rgba(244,243,239,.4);
+}
+.gar-formSelection label:first-child:not(.gar-labelTxtA){
+    display: inline-block;
+    width:40%;
+    font-weight:800;
+}
+.gar-formSelection input{
+    border:1px solid rgba(125,125,125,.5);
+}
+.gar-formSelection input:focus,.gar-formSelection select:focus,.gar-formSelection p:focus{
+    border:1px solid rgb(125,125,125);
+    box-shadow: 0 0 2px 0 rgba(125,125,125,.3);
+}
+.gar-formSelection p:focus{
+    outline:none;
+}
+.gar-formSelection select,.gar-formSelection p{
+    border:1px solid rgba(125,125,125,.5);
+}
+.gar-formSelection select{
+    color: rgb(125, 125, 125);
+}
+.gar-labelTxtA{
+    font-weight:800;
+}
+.gar-labelTxtA~p{
+    width:92%;
+    min-height:6em;
+    margin:5px 4% 0;
+}
+.gar-formSelection>input{
+    margin:10px 0 0 10px;
+    background: #F4F3EF;
+}
+.gar-formSelection [type='radio']{
+    margin:0;
+}
+.gar-formSelection [type='checkbox'],.gar-formSelection [type='checkbox']+label,
+.gar-formSelection [type='radio'],.gar-formSelection [type='radio']+label{
+    vertical-align: middle;
+}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

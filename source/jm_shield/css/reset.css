@@ -1,0 +1,61 @@
+@charset "utf-8";
+/* @font-face */
+@font-face{
+	font-family: 'courier_ser';
+	src: url('../font/courier/courier-webfont.eot');
+	src: local('unknown_font'),
+		 url('../font/courier/courier-webfont.woff') format('woff'),
+		 url('../font/courier/courier-webfont.ttf') format('truetype'),
+		 url('../font/courier/courier-webfont.svg') format('svg');
+}
+/* CSS Document */
+body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div,dl,dt,dd,input,figure{
+	margin:0;
+	padding:0;
+}
+*{
+	cursor: url("../img/cursor/index.cur"),auto;
+}
+body{
+	font-size: 12px;
+	font-family:courier,courier_ser;
+}
+img{
+	border: none;
+}
+li{
+	list-style: none;
+}
+input,select,textarea{
+	outline: none;
+	border: none;
+}
+textarea{
+	resize: none;
+}
+a{
+	text-decoration: none;
+	font-family: courier,courier_ser;
+	color: #656565;
+}
+/* clearfix */
+.clearfix:after{
+	content: "";display: block;clear:both;
+}
+.clearfix{
+	zoom:1;
+}
+/* float */
+.fr{
+	float: right;
+}
+.fl{
+	float: left;
+}
+/* hide */
+.hide{
+	display: none;
+}
+.show{
+	display: block;
+}
