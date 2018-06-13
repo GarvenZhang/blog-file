@@ -89,10 +89,15 @@ if (isDev) {
 
 } else {
 
-  const httpsOptions = {
-    key: fs.readFileSync(config.auth.key),
-    cert: fs.readFileSync(config.auth.cert)
-  }
+  module.exports = app.listen(config.serverPort, function (err) {
+    err && console.log(err)
+    console.log(`listening on port ${config.serverPort}`)
+  })
+
+  // const httpsOptions = {
+  //   key: fs.readFileSync(config.auth.key),
+  //   cert: fs.readFileSync(config.auth.cert)
+  // }
 
 
 // === 工作原理： === //
@@ -116,9 +121,9 @@ if (isDev) {
 // 7、服务器以 R 为密钥使用了对称加密算法加密网页内容并传输给浏览器。
 //
 // 8、浏览器以 R 为密钥使用之前约定好的解密算法获取网页内容。
-  module.exports = https.createServer(httpsOptions, app.callback()).listen(config.serverPort, function (err) {
-    err && console.log(err)
-    console.log(`Listening at localhost: ${config.serverPort}`)
-  })
+//   module.exports = https.createServer(httpsOptions, app.callback()).listen(config.serverPort, function (err) {
+//     err && console.log(err)
+//     console.log(`Listening at localhost: ${config.serverPort}`)
+//   })
 
 }
