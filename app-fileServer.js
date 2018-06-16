@@ -5,7 +5,7 @@ require('babel-core/register')
  * Module dependencies.
  */
 const logger = require('koa-logger')
-const serve = require('koa-static')
+const serve = require('garven-koa-static')
 const koaBody = require('koa-body')
 const Router = require('koa-router')
 const Koa = require('koa')
