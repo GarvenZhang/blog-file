@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "dev:server": "cross-env NODE_ENV=development nodemon ./app-fileServer.js",
-    "prod": "nodemon app-fileServer.js",
+    "prod": "NODE_ENV=production nodemon app-fileServer.js",
     "pm2": "NODE_ENV=production pm2 start app-fileServer.js"
   },
   "author": "",
