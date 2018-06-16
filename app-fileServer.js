@@ -57,7 +57,7 @@ app.use(logger())
 app.use(koaBody({ multipart: true }))
 
 // mysql
-global.connectionPool = mysql.createPool(config.dbConfig)
+global.connectionPool = mysql.createPool(isDev ? config.DEV_dbConfig : config.PROD_dbConfig)
 
 app.use(async function mysqlConnection (ctx, next) {
   try {

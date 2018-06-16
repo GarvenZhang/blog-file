@@ -5,7 +5,14 @@ module.exports = {
   ACCESS_CONTROL_ALLOW_ORIGIN: '*',
   ACCESS_CONTROL_ALLOW_METHOD: 'GET, POST',
   ACCESS_CONTROL_ALLOW_HEADERS: '*',
-  dbConfig: {
+  PROD_dbConfig: {
+    host: 'localhost',
+    port: 3306,
+    user: 'root',
+    password: 'sz1997',
+    database: 'myblog'
+  },
+  DEV_dbConfig: {
     host: 'localhost',
     port: 3306,
     user: 'root',
