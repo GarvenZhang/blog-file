@@ -1,7 +1,14 @@
 node_modules/
-upload/*
 dist/
 .idea/
 .DS_Store/
+
+## 上传文件
+
+upload/*.gif
+upload/*.png
+upload/*.jpg
+upload/*.webp
+upload/*.jpeg
 
 ## 安全
