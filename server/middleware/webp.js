@@ -1,7 +1,7 @@
 // 改：imagemin/index.js
 // Line 15  const dest = output
 // Line 30  path: dest
-const imagemin = require('imagemin')
+const imagemin = require('garven-imagemin')
 const webp = require('imagemin-webp')
 
 exports.cwebp = function (inputPath, outputFolder, quality) {

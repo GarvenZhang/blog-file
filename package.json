@@ -13,7 +13,8 @@
   "license": "ISC",
   "dependencies": {
     "cross-env": "^5.1.4",
-    "imagemin": "^5.3.1",
+    "garven-imagemin": "^5.3.1",
+    "garven-koa-static": "^4.0.2",
     "imagemin-webp": "^4.1.0",
     "koa": "^2.5.1",
     "koa-body": "^2.5.0",
@@ -21,7 +22,6 @@
     "koa-multer": "^1.0.2",
     "koa-route": "^3.2.0",
     "koa-router": "^7.4.0",
-    "koa-static": "^4.0.2",
     "mysql2": "^1.5.3"
   },
   "devDependencies": {
