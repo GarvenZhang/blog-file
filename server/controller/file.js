@@ -4,7 +4,6 @@ const webp = require('../middleware/webp')
 const config = require('../../config')
 
 exports.upload = async function (ctx) {
-
   // 文件上传
   const file = ctx.request.body.files.file
   const reader = fs.createReadStream(file.path)

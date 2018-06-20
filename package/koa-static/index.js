@@ -41,17 +41,15 @@ function serve (root, opts) {
 
       if (ctx.method === 'HEAD' || ctx.method === 'GET') {
         try {
-
           let webpToOtherTypePath = ''
+          const url = ctx.url
 
-          if (/\.png|\.jpeg|\.jpg|\.webp/i.test(ctx.url)) {
-
+          if (/\.png|\.jpeg|\.jpg|\.webp/i.test(url)) {
             const supportWebp = ctx.cookies.get('supportWebp')
 
-            if (!supportWebp) {
-              webpToOtherTypePath = ctx.url.substr(-5, 5)
+            if (supportWebp === 'false') {
+              webpToOtherTypePath = url.slice(0, url.indexOf('.webp'))
             }
-
           }
 
           done = await send(ctx, webpToOtherTypePath || ctx.path, opts)

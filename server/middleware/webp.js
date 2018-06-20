@@ -5,9 +5,7 @@ const imagemin = require('garven-imagemin')
 const webp = require('imagemin-webp')
 
 exports.cwebp = function (inputPath, outputFolder, quality) {
-
   return new Promise((resolve, reject) => {
-
     imagemin([inputPath], outputFolder, {
 
       plugins: [webp({
@@ -17,9 +15,5 @@ exports.cwebp = function (inputPath, outputFolder, quality) {
     })
 
     resolve()
-
   })
-
 }
-
-

@@ -6,16 +6,13 @@ import Popup from './main.js'
 // === 2.属性冗余：第一次new Popup()时，父类中的属性变成了undefined === //
 
 function Confirm (config) {
-
   Popup.call(this, config)
-
 }
 
 Confirm.prototype = new Popup()
 Confirm.prototype.constructor = Confirm
 
 Confirm.prototype.createBody = function () {
-
   let fragement = document.createDocumentFragment()
 
   let $question = document.createElement('p')
@@ -30,7 +27,6 @@ Confirm.prototype.createBody = function () {
   $noBtn.type = 'button'
   $noBtn.value = this.config.noText
 
-
   fragement.appendChild($question)
   fragement.appendChild($yesBtn)
   fragement.appendChild($noBtn)
@@ -38,11 +34,9 @@ Confirm.prototype.createBody = function () {
   this.$modalBody.appendChild(fragement)
 
   return this
-
 }
 
 Confirm.prototype.init = function (config) {
-
   let popup = new Confirm(config)
 
   popup
@@ -54,7 +48,6 @@ Confirm.prototype.init = function (config) {
     .createBody()
 
   this.open = this.open.bind(popup)
-
 }
 
 export default Confirm

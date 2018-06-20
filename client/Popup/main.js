@@ -14,7 +14,6 @@ import DragDrop from './Dragdrop.js'
  * @param {String} [config.header] - 标题
  */
 function Popup (config = {header: '', content: '', question: '', yesText: '', noText: ''}) {
-
   this.config = Object.assign({}, config)
   this.$wrap = null // 最外层
   this.$modalBg = null  // 背景层
@@ -35,7 +34,6 @@ function Popup (config = {header: '', content: '', question: '', yesText: '', no
   this.$modalBgStyle = `
     position: relative;
   `
-
 };
 
 Popup.prototype = {
@@ -139,13 +137,11 @@ Popup.prototype = {
    * 生成动画需要的内联样式
    */
   createKeyframes: function () {
-
     let $style = document.createElement('style')
     $style.innerHTML = this.default.$styleInnerHTML
     document.head.appendChild($style)
 
     return this
-
   },
 
   /**
@@ -157,7 +153,6 @@ Popup.prototype = {
    * // === 4.textContent: 比innerHTML性能更好，不会解析html，因此可避免xss === //
    */
   drawHeading: function () {
-    
     this.canvasWidth = 500
     this.canvasHeight = Math.max(160, 44 + parseFloat(getStyle(this.$modalBody, 'height')) + 10)
 
@@ -197,20 +192,17 @@ Popup.prototype = {
     this.$dragArea = $dragArea
 
     return this
-
   },
 
   /**
    * canvas画背景
    */
   drawBg: function () {
-    
     let canvas = $('canvas', this.$wrap)
     const canvasWidth = this.canvasWidth
     const canvasHeight = this.canvasHeight
 
     if (canvas.getContext) {
-
       let ctx = canvas.getContext('2d')
 
       ctx.fillStyle = 'rgba(0,0,0,.6)'
@@ -251,11 +243,9 @@ Popup.prototype = {
       ctx.fillStyle = '#004100'
       ctx.fill()
       ctx.stroke()
-
     }
 
     return this
-
   },
 
   /**
@@ -268,7 +258,6 @@ Popup.prototype = {
    * @public
    */
   open: function () {
-
     replaceClass(this.$wrap, 'popup-open', 'popup-close')
 
     return this
@@ -283,7 +272,6 @@ Popup.prototype = {
    * 关闭弹窗
    */
   close: function () {
-
     replaceClass(this.$wrap, 'popup-close', 'popup-open')
 
     return this

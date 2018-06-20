@@ -19,7 +19,6 @@ Alert.prototype = new Popup({
 // Alert.prototype.constructor = Alert
 
 Alert.prototype.createBody = function () {
-
   this.$modalBody.style = `
     position:  absolute;
     top: 50%;
@@ -32,7 +31,6 @@ Alert.prototype.createBody = function () {
   this.$modalBody.appendChild(span)
 
   return this
-
 }
 
 Alert.prototype.init = function (config) {

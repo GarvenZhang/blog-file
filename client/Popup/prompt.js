@@ -8,14 +8,9 @@ function Prompt (config) {
 inheritPrototype(Prompt, Popup)
 
 Popup.prototype.createBody = function () {
-
   let fragement = document.createDocumentFragment()
-
 }
 
 Popup.prototype.init = function () {
 
 }
-
-
-

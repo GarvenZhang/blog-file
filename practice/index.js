@@ -1,7 +1,6 @@
 const net = require('net')
 
 const server = net.createServer(c => {
-
   console.log('client connected')
 
   c.on('end', () => {

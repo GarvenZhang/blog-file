@@ -10,7 +10,6 @@
  * @param {Boolean} isBubble - isBubble
  */
 export function on (ele, type, handler, isBubble = false) {
-
   if (ele.addEventListener) {
     ele.addEventListener(type, handler, isBubble)
   } else if (ele.attachEvent) {
@@ -18,7 +17,6 @@ export function on (ele, type, handler, isBubble = false) {
   } else {
     ele[`on${type}`] = handler
   }
-
 }
 
 /**
@@ -30,7 +28,6 @@ export function on (ele, type, handler, isBubble = false) {
  * @param {Boolean} isBubble - isBubble
  */
 export function off (ele, type, handler, isBubble) {
-  
   if (ele.removeEventListener) {
     ele.addEventListener(type, handler, isBubble)
   } else if (ele.detachEvent) {
@@ -38,7 +35,6 @@ export function off (ele, type, handler, isBubble) {
   } else {
     ele[`on${type}`] = null
   }
-  
 }
 
 /**
@@ -67,13 +63,11 @@ export function getTarget (e) {
  * @param {Object} e - 事件对象
  */
 export function preventDefault (e) {
-  
   if (e.preventDefault) {
     e.preventDefault()
   } else {
     e.returnValue = true
   }
-  
 }
 
 /**
@@ -83,11 +77,9 @@ export function preventDefault (e) {
  * @param {Object} e - 事件对象
  */
 export function stopPropagation (e) {
-  
   if (e.stopPropagation) {
     e.stopPropagation()
   } else {
     e.cancelBubble = true
   }
-  
 }

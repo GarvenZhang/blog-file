@@ -105,4 +105,3 @@ function closeEmotionsLayer (e) {
 // 暂时不用表情功能
 // document.addEventListener('keyup', openEmotionsLayer, false)
 // document.addEventListener('keyup', closeEmotionsLayer, false)
-

@@ -4,9 +4,7 @@ const config = require('../../../config')
 const app = require('../../../app-fileServer')
 
 describe('test/controller/address.test.js', function () {
-
   describe('GET /address?cb=jsonp.getAddress', function () {
-
     let tmp = {}
 
     beforeAll(() => {
@@ -17,13 +15,11 @@ describe('test/controller/address.test.js', function () {
     })
 
     test('jsonp.getAddress() should be called', function (done) {
-
       request(app)
         .get('/address?cb=jp.getAddress')
         .expect('Content-Type', 'application/javascript')
         .expect(200)
         .end((err, res) => {
-
           err && console.log(err)
           eval(res.text)
 
@@ -33,9 +29,6 @@ describe('test/controller/address.test.js', function () {
 
           done()
         })
-
     })
-
   })
-
 })

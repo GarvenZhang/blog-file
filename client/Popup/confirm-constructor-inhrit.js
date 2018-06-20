@@ -7,13 +7,10 @@ import Popup from './main.js'
 // === 1.只能继承父类构造函数中的属性和方法，无法继承其原型链上的方法，无法单独使用 === //
 
 function Confirm (config) {
-
   Popup.call(this, config)
-
 }
 
 Confirm.prototype.createBody = function () {
-
   let fragement = document.createDocumentFragment()
 
   let $question = document.createElement('p')
@@ -28,7 +25,6 @@ Confirm.prototype.createBody = function () {
   $noBtn.type = 'button'
   $noBtn.value = this.config.noText
 
-
   fragement.appendChild($question)
   fragement.appendChild($yesBtn)
   fragement.appendChild($noBtn)
@@ -36,11 +32,9 @@ Confirm.prototype.createBody = function () {
   this.$modalBody.appendChild(fragement)
 
   return this
-
 }
 
 Confirm.prototype.init = function (config) {
-
   let popup = new Confirm(config)
 
   popup
@@ -52,7 +46,6 @@ Confirm.prototype.init = function (config) {
     .createBody()
 
   this.open = this.open.bind(popup)
-
 }
 
 export default Confirm

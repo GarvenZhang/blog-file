@@ -150,7 +150,7 @@ let emotionsModule = {
   /**
    * 选取
    */
-  control: function(e) {
+  control: function (e) {
     let self = this
     switch (e.keyCode) {
       case 37:
@@ -186,7 +186,7 @@ let emotionsModule = {
   /**
    * 绑定事件
    */
-  bindEvent: function() {
+  bindEvent: function () {
     this.$input.addEventListener('keyup', this.control.bind(this), false)
   },
   /**
@@ -198,7 +198,7 @@ let emotionsModule = {
     this.heightCount = options.heightCount
     this.width = options.width
     this.height = options.height
-    this.selectFn =  options.selectFn
+    this.selectFn = options.selectFn
     this.$list = options.wrap
     // 创建数据结构
     this.createDataStruc()
@@ -213,4 +213,3 @@ let emotionsModule = {
     this.curId = '1,1'
   }
 }
-

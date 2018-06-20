@@ -66,6 +66,7 @@
   "license": "MIT",
   "name": "garven-koa-static",
   "author": "garven <jf00258jf@hotmail.com> (https://www.hellojm.cn)",
+  "_v": "0.0.2",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/koajs/static.git"
@@ -76,5 +77,5 @@
     "test-cov": "node --harmony ./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha",
     "test-travis": "node --harmony ./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha --report lcovonly"
   },
-  "version": "4.0.2"
+  "version": "4.0.3"
 }

@@ -16,21 +16,18 @@ import { on, off, getEvent, getTarget } from '../lib/event.js'
 // === 2.将事件都挂载到document上，并通过e.type来判断事件类型；其中通过一个变量(dragging)来判断是否拖拽的区域是正确的 === //
 
 let DragDrop = (function () {
-
   let dragging = null
   let diffX = 0
   let diffY = 0
 
-  function handleEvent (e) {
-
+  let handleEvent = function (e) {
     e = getEvent(e)
     let target = getTarget(e)
     let $wrap = this.$wrap
 
     switch (e.type) {
-
       case 'mousedown':
-        
+
         if (target.getAttribute('gar-dragable')) {
           dragging = target
           diffX = e.clientX - $wrap.offsetLeft
@@ -50,16 +47,14 @@ let DragDrop = (function () {
 
         dragging = null
         break
-
     }
-
   }
 
   return {
 
     enable: function () {
       handleEvent = handleEvent.bind(this)
-      
+
       on(document, 'mousedown', handleEvent)
       on(document, 'mousemove', handleEvent)
       on(document, 'mouseup', handleEvent)
@@ -77,7 +72,6 @@ let DragDrop = (function () {
       return this
     }
   }
-
 }())
 
 export default DragDrop
