@@ -1,0 +1,16 @@
+.form--spwd {
+  color: #00F900;
+}
+.form--spwd .field {
+  display: flex;
+  margin-bottom: 20px;
+}
+.form--spwd .title {
+  width: 80px;
+}
+.form--spwd .input,
+.form--spwd [class^='btn-'] {
+  flex: 1;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, .5);
+}

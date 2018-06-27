@@ -51,9 +51,9 @@ b.然后，从严的最后一个二进制位开始，依次从后向前填入格
 const staticPath = path.resolve(__dirname, './dist')
 app.use(serve(staticPath, {
   setHeaders: function (res, path, stats) {
-    if (path === `${staticPath}/chatroom-login.js`) {
-      res.setHeader('Content-Type', 'text/javascript;charset=gb2312')
-    }
+    // if (path === `${staticPath}/chatroom-login.js`) {
+    //   res.setHeader('Content-Type', 'text/javascript;charset=gb2312')
+    // }
   }
 }))
 
@@ -108,14 +108,14 @@ app.use(router.allowedMethods())
 // listen
 
 if (isDev) {
-  module.exports = app.listen(config.serverPort, function (err) {
+  module.exports = app.listen(config.dev.serverPort, function (err) {
     err && console.log(err)
-    console.log(`listening on port ${config.serverPort}`)
+    console.log(`listening on port ${config.dev.serverPort}`)
   })
 } else {
-  module.exports = app.listen(config.serverPort, function (err) {
+  module.exports = app.listen(config.prod.port, function (err) {
     err && console.log(err)
-    console.log(`listening on port ${config.serverPort}`)
+    console.log(`listening on port ${config.prod.port}`)
   })
 
   // const httpsOptions = {

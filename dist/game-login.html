@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="id=edge">
+  <title>Title</title>
+</head>
+<body>
+<div id="mvvm-app">
+  <form class="form form--spwd">
+    <div class="filed">
+      <p class="msgs">{{msgs}}</p>
+    </div>
+    <div class="field">
+      <span class="title">邮箱:</span>
+      <input v-model="email" type="email" class="input">
+    </div>
+    <div class="field">
+      <span class="title">昵称:</span>
+      <input v-model="name" type="text" class="input">
+    </div>
+    <div class="field">
+      <span class="title">是否记住:</span>
+      <input v-model="isRemembered" type="checkbox" class="input">
+    </div>
+    <div class="field">
+      <input type="button" v-on:click="submit" class="btn-submit" value="进入">
+    </div>
+  </form>
+</div>
+
+<!--
+// === 编码都同一用utf-8了，若请求的js文件是gbk编码的，会乱码。解决办法是设置charset='gb2312' === //
+// === 由于koa硬性设置了返回的请求头中Content-Type的charset为utf-8, 所以无效，中文还是会乱码 === //
+-->
+<!--<script src="chatroom-login.js" charset="gb2312"></script>-->
+<script type="text/javascript" src="/js/game-login.js"></script></body>
+</html>

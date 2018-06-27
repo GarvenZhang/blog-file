@@ -1,10 +1,16 @@
 module.exports = {
-  serverPort: 3001,
   imagePath: './server/upload',
   maxAge: 60 * 60 * 24 * 7,
   ACCESS_CONTROL_ALLOW_ORIGIN: '*',
   ACCESS_CONTROL_ALLOW_METHOD: 'GET, POST',
   ACCESS_CONTROL_ALLOW_HEADERS: '*',
+  dev: {
+    devPort: 3001,
+    serverPort: 3009
+  },
+  prod: {
+    port: 3001
+  },
   PROD_dbConfig: {
     host: 'localhost',
     port: 3306,
