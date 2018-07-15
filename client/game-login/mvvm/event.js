@@ -1,5 +1,18 @@
 let uid = 0
 
+// === 类的静态属性: 直接通过类而非实例来访问, 不会被继承 === //
+/*
+class Event {}
+Event.target = null
+
+// 等同于
+
+class Event {
+  static Target = null
+}
+*/
+
+
 /**
  * 自定义事件类
  */

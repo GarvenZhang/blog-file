@@ -1,3 +1,5 @@
+// === 惰性函数: 解决每次都要调用进行判断的问题，实质是重写函数 === //
+
 /**
  * 绑定DOM事件
  * // === 兼容性： === //
@@ -9,14 +11,17 @@
  * @param {Function} handler - 事件处理程序
  * @param {Boolean} isBubble - isBubble
  */
-export function on (ele, type, handler, isBubble = false) {
+
+let on = function (ele, type, handler, isBubble = false) {
+
   if (ele.addEventListener) {
-    ele.addEventListener(type, handler, isBubble)
+    on = ele.addEventListener(type, handler, isBubble)
   } else if (ele.attachEvent) {
-    ele.attachEvent(`on${type}`, handler)
+    on = ele.attachEvent(`on${type}`, handler)
   } else {
-    ele[`on${type}`] = handler
+    on = ele[`on${type}`] = handler
   }
+
 }
 
 /**
@@ -27,14 +32,22 @@ export function on (ele, type, handler, isBubble = false) {
  * @param {Function} handler - 事件处理程序
  * @param {Boolean} isBubble - isBubble
  */
-export function off (ele, type, handler, isBubble) {
+
+let off = function (ele, type, handler, isBubble) {
+
   if (ele.removeEventListener) {
-    ele.addEventListener(type, handler, isBubble)
+    off = ele.addEventListener(type, handler, isBubble)
   } else if (ele.detachEvent) {
-    ele.detachEvent(`on${type}`, handler)
+    off = ele.detachEvent(`on${type}`, handler)
   } else {
-    ele[`on${type}`] = null
+    off = ele[`on${type}`] = null
   }
+
+}
+
+export {
+  on,
+  off
 }
 
 /**
@@ -63,11 +76,7 @@ export function getTarget (e) {
  * @param {Object} e - 事件对象
  */
 export function preventDefault (e) {
-  if (e.preventDefault) {
-    e.preventDefault()
-  } else {
-    e.returnValue = true
-  }
+  return e.preventDefault ? e.preventDefault() : e.returnValue = true
 }
 
 /**
@@ -77,9 +86,5 @@ export function preventDefault (e) {
  * @param {Object} e - 事件对象
  */
 export function stopPropagation (e) {
-  if (e.stopPropagation) {
-    e.stopPropagation()
-  } else {
-    e.cancelBubble = true
-  }
+  return e.stopPropagation ? e.stopPropagation() : e.cancelBubble = true
 }

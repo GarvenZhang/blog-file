@@ -13,7 +13,6 @@
 import Event from './event'
 
 class Observer {
-
   constructor (data) {
     this.data = data
     this.walk(data)
@@ -34,7 +33,6 @@ class Observer {
    * @param {*} val - 值
    */
   defineReactive (data, key, val) {
-
     let event = new Event()
 
     // 递归，监听子属性, 确保每个基本类型的属性能被监听到
@@ -47,7 +45,6 @@ class Observer {
       configurable: false,
 
       get () {
-
         // 由于需要在闭包内添加watcher，所以通过Event定义一个全局target属性，暂存watcher, 添加完移除
         Event.target && event.depend()
 
@@ -55,24 +52,20 @@ class Observer {
       },
 
       set (newVal) {
-
         if (newVal === val) {
           return
         }
 
         val = newVal
-        
+
         // 若是对象, 监听新值
         observe(newVal)
 
         // 发布给所有订阅者
         event.trigger()
-
       }
     })
-
   }
-
 }
 
 /**

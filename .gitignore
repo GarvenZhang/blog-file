@@ -1,14 +1,11 @@
 node_modules/
 .idea/
 .DS_Store/
-config.js
 
 ## 上传文件
-
-upload/*.gif
-upload/*.png
-upload/*.jpg
-upload/*.webp
-upload/*.jpeg
+server/upload/*
 
 ## 安全
+config.js
+1_file.hellojm.cn_bundle.crt
+2_file.hellojm.cn.key

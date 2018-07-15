@@ -386,7 +386,7 @@
   gar.removeClass = function (eleOrObj, classname) {
     if (!eleOrObj.nodeType) {
       for (var className in eleOrObj) {
-        if (new RegExp('\\b' + className + '\\b', 'gi').test(eleOrObj[className].className))          { eleOrObj[className].className = ('' + eleOrObj[className].className + '').replace(className, '') }
+        if (new RegExp('\\b' + className + '\\b', 'gi').test(eleOrObj[className].className)) { eleOrObj[className].className = ('' + eleOrObj[className].className + '').replace(className, '') }
       }
     } else if (new RegExp('\\b' + classname + '\\b', 'gi').test(eleOrObj.className)) { eleOrObj.className = ('' + eleOrObj.className + '').replace(classname, '') }
   }
@@ -1021,7 +1021,7 @@
     },
     find: function (ele) {
       for (var l = this.dataStore.length; l--;) {
-        if (this.dataStore[l] == ele)          { return l }
+        if (this.dataStore[l] == ele) { return l }
       }
       return -1
     },
@@ -1056,8 +1056,7 @@
     },
     contains: function (ele) {
       for (var l = this.dataStore.length; l--;) {
-        if (this.dataStore[l] == ele)
-          {return true}
+        if (this.dataStore[l] == ele) { return true }
       }
       return false
     },
@@ -1367,8 +1366,7 @@
     hash = this.HornerHash(key)
     if (hash > -1) {
       for (var i = hash; this.table[hash] != undefined; i++) {
-        if (this.table[hash] === key)
-   return this.vals[hash]
+        if (this.table[hash] === key) { return this.vals[hash] }
       }
     }
     return undefined
@@ -1428,7 +1426,7 @@
     },
     difference: function (set) {
       for (var tmpSet = new gar.Set(), d = this.dataStore, l = d.length; l--;) {
-        if (!set.contains(d[l]))          { tmpSet.add(d[l]) }
+        if (!set.contains(d[l])) { tmpSet.add(d[l]) }
       }
       return tmpSet
     }

@@ -35,14 +35,13 @@ export const strategies = {
   },
   maxLength: function (value, length, errMsg) {
     return value.length > length ? errMsg : true
-  },
+  }
 }
 
 /**
  * Validator 类在这里作为context，负责接收用户的请求并委托给strategy对象
  */
 export default class Validator {
-
   constructor () {
     this.cache = []
   }
@@ -55,30 +54,22 @@ export default class Validator {
    * @param {String} rules[].errMsg - 错误提示信息
    */
   add (value, rules) {
-
     let self = this
 
-    for (let i = 0, rule; rule = rules[i++]; ) {
-
+    for (let i = 0, rule; rule = rules[i++];) {
       (function (rule) {
-
         let strategyArr = rule.strategy.split(':')
         let errMsg = rule.errMsg
 
         self.cache.push(function () {
-
           const stratety = strategyArr.shift()
           strategyArr.unshift(value)
           strategyArr.push(errMsg)
 
           return strategies[stratety](strategyArr)
-
         })
-
       })(rule)
-
     }
-
   }
 
   /**
@@ -86,17 +77,12 @@ export default class Validator {
    * @return {String|Boolean} 检验结果
    */
   start () {
-
-    for (let i = 0, validatorFn; validatorFn = this.cache[i++]; ) {
-
+    for (let i = 0, validatorFn; validatorFn = this.cache[i++];) {
       const errMsg = validatorFn()
       console.log(errMsg)
       if (typeof errMsg === 'string') {
         return errMsg
       }
-
     }
-
   }
-
 }

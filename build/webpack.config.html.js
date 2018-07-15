@@ -39,6 +39,6 @@ module.exports = {
         'secret-login'
       ],
       filename: 'secret-login.html'
-    }),
+    })
   ]
 }

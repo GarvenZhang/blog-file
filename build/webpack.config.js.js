@@ -7,7 +7,7 @@ module.exports = {
 
     'secret-login': [
       './client/secret-login/index.js'
-    ],
+    ]
 
   }
 }

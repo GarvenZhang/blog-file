@@ -140,7 +140,6 @@ var vm = new _mvvm2.default({
   },
   methods: {
     submit: function submit(e) {
-
       var validator = new _validator2.default();
 
       validator.add(this.email, [{
@@ -280,7 +279,6 @@ var Compile = function () {
     var vm = arguments[1];
     (0, _classCallCheck3.default)(this, Compile);
 
-
     this.$vm = vm;
     this.$el = isElementNode(el) ? el : (0, _$2.default)(el);
 
@@ -296,7 +294,6 @@ var Compile = function () {
   (0, _createClass3.default)(Compile, [{
     key: 'init',
     value: function init() {
-
       var $el = this.$el;
 
       if (!$el) {
@@ -319,7 +316,6 @@ var Compile = function () {
   }, {
     key: 'node2Fragment',
     value: function node2Fragment(el) {
-
       var frag = document.createDocumentFragment();
       var child = void 0;
 
@@ -342,19 +338,16 @@ var Compile = function () {
       var _this = this;
 
       [].concat((0, _toConsumableArray3.default)(node.childNodes)).forEach(function (node) {
-
         var text = node.textContent;
         // 表达式文本
         var reg = /\{\{(.*?)\}\}/;
 
         // 编译元素节点
         if (isElementNode(node)) {
-
           _this.compileAttr(node);
 
           // 编译文本节点
         } else if (isTextNode(node) && reg.test(text)) {
-
           _this.compileText(node, RegExp.$1);
         }
 
@@ -376,7 +369,6 @@ var Compile = function () {
       var _this2 = this;
 
       [].slice.call(node.attributes).forEach(function (attr) {
-
         var attrName = attr.name;
 
         // 若不是v-开头的特性则返回
@@ -390,12 +382,10 @@ var Compile = function () {
 
         // 事件指令, 如 v-on:click
         if (isEventDirective(dir)) {
-
           _compileUtil2.default.eventHandler(node, _this2.$vm, attrVal, dir);
 
           // 普通指令
         } else {
-
           _compileUtil2.default[dir] && _compileUtil2.default[dir](node, _this2.$vm, attrVal);
         }
 
@@ -456,7 +446,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * @private
  */
 function bind(node, vm, attrVal, dir) {
-
   // 视图更新函数
   var updaterFn = _updater2.default[dir + 'Updater'];
 
@@ -489,7 +478,6 @@ return ret
  * @private
  */
 function _getVMVal(vm, attrVal) {
-
   var val = vm;
 
   attrVal = attrVal.split('.');
@@ -508,12 +496,10 @@ function _getVMVal(vm, attrVal) {
  * @private
  */
 function _setVMVal(vm, attrVal, newVal) {
-
   var _val = vm;
 
   attrVal = attrVal.split('.');
   attrVal.forEach(function (item, i) {
-
     // 还未到达最深层次的属性时就改变引用并保存，到最后一层次属性时将其值改变为新值
     if (i < attrVal.length - 1) {
       _val = _val[item];
@@ -555,13 +541,11 @@ exports.default = {
    * @param {String} attrVal - 属性值
    */
   model: function model(node, vm, attrVal) {
-
     bind(node, vm, attrVal, 'model');
 
     var val = _getVMVal(vm, attrVal);
 
     node.addEventListener('input', function (e) {
-
       var newVal = e.target.value;
 
       if (val === newVal) {
@@ -594,7 +578,6 @@ exports.default = {
    * @param {String} dir - 指令
    */
   eventHandler: function eventHandler(node, vm, attrVal, dir) {
-
     // 从v-特性中获取到事件名
     var eventType = dir.split(':')[1];
     // 从methods中获取到事件处理程序
@@ -632,6 +615,18 @@ var _createClass3 = _interopRequireDefault(_createClass2);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var uid = 0;
+
+// === 类的静态属性: 直接通过类而非实例来访问, 不会被继承 === //
+/*
+class Event {}
+Event.target = null
+
+// 等同于
+
+class Event {
+  static Target = null
+}
+*/
 
 /**
  * 自定义事件类
@@ -751,7 +746,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * @private
  */
 function _proxyData(key) {
-
   (0, _defineProperty2.default)(this, key, {
 
     configurable: false,
@@ -834,7 +828,6 @@ var MVVM = function () {
 
     var ops = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
     (0, _classCallCheck3.default)(this, MVVM);
-
 
     this.ops = ops;
     this._data = ops.data;
@@ -958,7 +951,6 @@ var Observer = function () {
   }, {
     key: 'defineReactive',
     value: function defineReactive(data, key, val) {
-
       var event = new _event2.default();
 
       // 递归，监听子属性, 确保每个基本类型的属性能被监听到
@@ -971,14 +963,12 @@ var Observer = function () {
         configurable: false,
 
         get: function get() {
-
           // 由于需要在闭包内添加watcher，所以通过Event定义一个全局target属性，暂存watcher, 添加完移除
           _event2.default.target && event.depend();
 
           return val;
         },
         set: function set(newVal) {
-
           if (newVal === val) {
             return;
           }
@@ -1065,7 +1055,6 @@ exports.default = {
    * @param {String} oldVal - 旧值
    */
   classUpdater: function classUpdater(node, val, oldVal) {
-
     var className = node.className;
     className = className.replace(oldVal, '').replace(/\s$/, '');
 
@@ -1129,7 +1118,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * @param {String} exp - model中的属性名
  */
 function parseGetter(exp) {
-
   if (/[^\w.$]/.test(exp)) {
     return;
   }
@@ -1137,9 +1125,7 @@ function parseGetter(exp) {
   var exps = exp.split('.');
 
   return function (obj) {
-
     for (var i = 0, l = exps.length; i < l; ++i) {
-
       if (!obj) {
         return;
       }
@@ -1154,7 +1140,6 @@ function parseGetter(exp) {
 var Watcher = function () {
   function Watcher(vm, expOrFn, cb) {
     (0, _classCallCheck3.default)(this, Watcher);
-
 
     this.cb = cb;
     this.vm = vm;
@@ -1174,7 +1159,6 @@ var Watcher = function () {
   (0, _createClass3.default)(Watcher, [{
     key: 'update',
     value: function update() {
-
       // 取到最新值
       var newVal = this.get();
       var oldVal = this.val;
@@ -1197,7 +1181,6 @@ var Watcher = function () {
   }, {
     key: 'addEvent',
     value: function addEvent(event) {
-
       if (this.eventIds.hasOwnProperty(event.id)) {
         return;
       }
@@ -1214,7 +1197,6 @@ var Watcher = function () {
   }, {
     key: 'get',
     value: function get() {
-
       // 将当前订阅者指向自己
       _event2.default.target = this;
 
@@ -1392,18 +1374,14 @@ var Validator = function () {
   (0, _createClass3.default)(Validator, [{
     key: 'add',
     value: function add(value, rules) {
-
       var self = this;
 
       for (var i = 0, rule; rule = rules[i++];) {
-
         (function (rule) {
-
           var strategyArr = rule.strategy.split(':');
           var errMsg = rule.errMsg;
 
           self.cache.push(function () {
-
             var stratety = strategyArr.shift();
             strategyArr.unshift(value);
             strategyArr.push(errMsg);
@@ -1422,9 +1400,7 @@ var Validator = function () {
   }, {
     key: 'start',
     value: function start() {
-
       for (var i = 0, validatorFn; validatorFn = this.cache[i++];) {
-
         var errMsg = validatorFn();
         console.log(errMsg);
         if (typeof errMsg === 'string') {

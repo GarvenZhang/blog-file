@@ -26,7 +26,6 @@ export default {
    * @param {String} oldVal - 旧值
    */
   classUpdater (node, val, oldVal) {
-
     let className = node.className
     className = className.replace(oldVal, '')
       .replace(/\s$/, '')
@@ -34,7 +33,6 @@ export default {
     let space = className && String(val) ? ' ' : ''
 
     node.className = className + space + val
-
   },
 
   /**

@@ -26,8 +26,8 @@ module.exports = {
     database: 'myblog'
   },
   auth: {
-    key: './server/auth/2_file.hellojm.cn.key',
-    cert: './server/auth/1_file.hellojm.cn_bundle.crt',
+    key: './2_file.hellojm.cn.key',
+    cert: './1_file.hellojm.cn_bundle.crt',
     subToken01: '#$%^%djfaslkf#%&e@',
     subToken02: 'd2feijncn4g&&3ad##w'
   },

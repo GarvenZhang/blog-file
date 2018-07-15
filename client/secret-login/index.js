@@ -1,13 +1,53 @@
+import velement from './vdom/velement.js'
+import diff from './vdom/diff.js'
+import patch from './vdom/patch.js'
+
 import '../lib/aop'
-import { $ } from '../lib/$'
+import $ from '../lib/$'
 import './index.css'
+
+/*
+<form class="form form--spwd">
+  <div class="field">
+    <span class="title">二级密码:</span>
+    <input type="password" class="input"/>
+  </div>
+  <div class="field">
+    <input type="button" class="btn-submit" value='修改'/>
+  </div>
+</form>
+*/
+
+let vdom = velement('form', { class: 'form form--spwd' }, [
+  velement('div', { class: 'field' }, [
+    velement('span', {class: 'title'}, ['二级密码:']),
+    velement('input', {class: 'input', type: 'password'})
+  ]),
+  velement('div', {class: 'field'}, [
+    velement('input', {class: 'btn-submit', type: 'button', value: '修改'})
+  ]),
+])
+let rootnode = vdom.render()
+$('#root').appendChild(rootnode)
+
+let newVdom = velement('form', { class: 'form form--spwd' }, [
+  velement('div', { class: 'field' }, [
+    velement('span', {class: 'title'}, ['二级密码:']),
+    velement('input', {class: 'input', type: 'password'})
+  ]),
+  velement('div', {class: 'field'}, [
+    velement('input', {class: 'btn-submit', type: 'button', value: '提交'})
+  ]),
+])
+
+patch(rootnode, diff(vdom, newVdom))
 
 // === XDM(跨文档消息传送cross-document messaging): 在来自不同域的页面间传递消息 === //
 // === 1 window.postMessage(消息, 表示消息接收方来自哪个域的字符串) === //
 // === 2 message事件: 接收到XDM消息时，会触发window对象的message事件 === //
 // === 2.1 e.data, e.origin(发送消息的文档所在的域), source(发送消息的文档的window对象的代理) === //
 
-var data = {}
+let data = {}
 
 window.addEventListener('message', function (e) {
   if (e.origin === 'http://localhost:8080') {
@@ -18,7 +58,6 @@ window.addEventListener('message', function (e) {
       msg: '修改成功!'
     }, data.parentSrc)
   }
-
 }, false)
 
 // === 装饰器模式: 能在不改变对象自身的基础上, 在程序运行期间给对象动态地添加职责的方式 === //
@@ -30,14 +69,11 @@ const $btnSubmit = $('.btn-submit')
 
 // 验证
 const validate = () => {
-  
-  
+
 }
 
 let formSubmit = () => {
- 
-  
-  
+
 }
 
 formSubmit = formSubmit.before(validate)

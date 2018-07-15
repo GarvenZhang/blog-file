@@ -35,7 +35,6 @@ let vm = new MVVM({
   },
   methods: {
     submit: function (e) {
-      
       let validator = new Validator()
 
       validator.add(this.email, [
@@ -45,7 +44,7 @@ let vm = new MVVM({
         }, {
           strategy: 'isMail',
           errMsg: 'email格式不合法'
-        },
+        }
       ])
 
       validator.add(this.name, [
@@ -55,7 +54,7 @@ let vm = new MVVM({
         }, {
           strategy: 'isLegal',
           errMsg: '昵称不合法'
-        },
+        }
       ])
 
       const ret = validator.start()
@@ -64,7 +63,6 @@ let vm = new MVVM({
         alert(ret)
         return false
       }
-
     }
   }
 })

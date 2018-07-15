@@ -14,7 +14,6 @@ import Event from './event'
  * @param {String} exp - model中的属性名
  */
 function parseGetter (exp) {
-
   if (/[^\w.$]/.test(exp)) {
     return
   }
@@ -22,27 +21,20 @@ function parseGetter (exp) {
   const exps = exp.split('.')
 
   return obj => {
-
     for (let i = 0, l = exps.length; i < l; ++i) {
-
       if (!obj) {
         return
       }
 
       obj = obj[exps[i]]
-
     }
 
     return obj
-
   }
-
 }
 
 export default class Watcher {
-
   constructor (vm, expOrFn, cb) {
-
     this.cb = cb
     this.vm = vm
     this.eventIds = {}
@@ -51,14 +43,12 @@ export default class Watcher {
 
     // 此处为了触发属性的getter，从而在event添加自己，结合Observer更易理解
     this.val = this.get()
-
   }
 
   /**
    * 属性值变化收到通知
    */
   update () {
-
     // 取到最新值
     const newVal = this.get()
     const oldVal = this.val
@@ -71,7 +61,6 @@ export default class Watcher {
     this.val = newVal
     // 执行Compile中绑定的回调，更新视图
     this.cb.call(this.vm, newVal, oldVal)
-
   }
 
   /**
@@ -79,14 +68,12 @@ export default class Watcher {
    * @param {Object} event - 自定义事件
    */
   addEvent (event) {
-
     if (this.eventIds.hasOwnProperty(event.id)) {
       return
     }
 
     event.listen(this)
     this.eventIds[event.id] = event
-
   }
 
   /**
@@ -94,7 +81,6 @@ export default class Watcher {
    * @return {String}
    */
   get () {
-
     // 将当前订阅者指向自己
     Event.target = this
 
@@ -106,7 +92,5 @@ export default class Watcher {
     Event.target = null
 
     return val
-
   }
-
 }

@@ -10,7 +10,6 @@ import updater from './updater'
  * @private
  */
 function bind (node, vm, attrVal, dir) {
-
   // 视图更新函数
   const updaterFn = updater[dir + 'Updater']
 
@@ -22,7 +21,6 @@ function bind (node, vm, attrVal, dir) {
   // 实例化订阅者，此操作会在对应的属性消息订阅器中添加了该订阅者watcher
   // 一旦属性值有变化，会收到通知执行此更新函数，更新视图
   new Watcher(vm, attrVal, (newVal, oldVal) => updaterFn && updaterFn(node, newVal, oldVal))
-
 }
 
 // === 解析多层级变量访问: === //
@@ -42,14 +40,12 @@ return ret
  * @private
  */
 function _getVMVal (vm, attrVal) {
-
   let val = vm
 
   attrVal = attrVal.split('.')
   attrVal.forEach(item => val = val[item])
 
   return val
-
 }
 
 /**
@@ -60,21 +56,17 @@ function _getVMVal (vm, attrVal) {
  * @private
  */
 function _setVMVal (vm, attrVal, newVal) {
-
   let _val = vm
 
   attrVal = attrVal.split('.')
   attrVal.forEach((item, i) => {
-
     // 还未到达最深层次的属性时就改变引用并保存，到最后一层次属性时将其值改变为新值
     if (i < attrVal.length - 1) {
       _val = _val[item]
     } else {
       _val[item] = newVal
     }
-
   })
-
 }
 
 // 指令处理集合
@@ -107,13 +99,11 @@ export default {
    * @param {String} attrVal - 属性值
    */
   model (node, vm, attrVal) {
-
     bind(node, vm, attrVal, 'model')
 
     let val = _getVMVal(vm, attrVal)
 
     node.addEventListener('input', e => {
-
       const newVal = e.target.value
 
       if (val === newVal) {
@@ -123,9 +113,7 @@ export default {
       _setVMVal(vm, attrVal, newVal)
 
       val = newVal
-
     })
-
   },
 
   /**
@@ -146,7 +134,6 @@ export default {
    * @param {String} dir - 指令
    */
   eventHandler (node, vm, attrVal, dir) {
-
     // 从v-特性中获取到事件名
     const eventType = dir.split(':')[1]
     // 从methods中获取到事件处理程序
@@ -154,7 +141,6 @@ export default {
 
     // 绑定
     eventType && fn && node.addEventListener(eventType, fn.bind(vm), false)
-
-  },
+  }
 
 }

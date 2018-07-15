@@ -9,14 +9,12 @@
  * @return {Object}
  */
 let myImage = (function () {
-
   let img = document.createElement('img')
   document.body.appendChild(img)
 
   return {
     setSrc: src => img.src = src
   }
-
 })()
 
 /**
@@ -25,7 +23,6 @@ let myImage = (function () {
  * @return {Object}
  */
 let proxyImg = (function () {
-
   let img = new Image()
   img.onload = function () {
     myImage.setSrc(this.src)
@@ -37,7 +34,6 @@ let proxyImg = (function () {
       img.src = src
     }
   }
-
 }())
 
 proxyImg.setSrc('真正要请求的图片src')

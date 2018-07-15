@@ -42,7 +42,6 @@ import Compile from './compile'
  * @private
  */
 function _proxyData (key) {
-
   Object.defineProperty(this, key, {
 
     configurable: false,
@@ -55,7 +54,6 @@ function _proxyData (key) {
       this._data[key] = newVal
     }
   })
-
 }
 
 /**
@@ -64,7 +62,6 @@ function _proxyData (key) {
  * @private
  */
 function _proxyComputed () {
-
   let computed = this.ops.computed
 
   if (typeof computed !== 'object') {
@@ -80,16 +77,13 @@ function _proxyComputed () {
 
     })
   })
-
 }
 
 /**
  * MVVM类
  */
 export default class MVVM {
-
   constructor (ops = {}) {
-
     this.ops = ops
     this._data = ops.data
 
@@ -104,7 +98,6 @@ export default class MVVM {
 
     // 编译指令
     this.$compile()
-
   }
 
   /**
@@ -122,5 +115,4 @@ export default class MVVM {
   $watch (key, cb) {
     return new Watcher(this, key, cb)
   }
-
 }
