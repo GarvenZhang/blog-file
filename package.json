@@ -51,6 +51,7 @@
     "babel-runtime": "^6.26.0",
     "compression-webpack-plugin": "^1.1.11",
     "css-loader": "^0.28.11",
+    "cz-conventional-changelog": "^2.1.0",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "html-webpack-plugin": "^3.2.0",
     "jest": "^22.4.3",
@@ -64,5 +65,10 @@
     "webpack-merge": "^4.1.3",
     "webpack-parallel-uglify-plugin": "^1.1.0",
     "write-file-webpack-plugin": "^4.3.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
