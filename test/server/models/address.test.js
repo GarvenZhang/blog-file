@@ -3,7 +3,7 @@ const mysql = require('mysql2/promise')
 const addressModel = require('../../../server/models/address')
 const config = require('../../../config')
 
-describe('test/models/address.test.js', function () {
+describe('prod/models/address.test.js', function () {
   describe('addressModel.getStreet()', function () {
     beforeAll(async () => {
       global.connectionPool = mysql.createPool(config.dbConfig)

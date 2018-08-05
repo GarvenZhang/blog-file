@@ -1,4 +1,4 @@
-const config = require('../../config')
+const config = require('../auth/config')
 
 // === CORS(跨域资源共享)：有特定响应字段的ajax, 非IE10以下 === //
 // === 1 简单请求: 同时满足 GET/GET/POST + Accept/Accept-Language/Content-Language/Last-Event-ID/Content-Type(application/x-www-form-urlencoded、multipart/form-data、text/plain) === //
@@ -18,5 +18,6 @@ module.exports = async function (ctx, next) {
   ctx.set('Access-Control-Allow-Origin', config.ACCESS_CONTROL_ALLOW_ORIGIN)
   ctx.set('Access-Control-Allow-Method', config.ACCESS_CONTROL_ALLOW_METHOD)
   ctx.set('Access-Control-Allow-Headers', config.ACCESS_CONTROL_ALLOW_HEADERS)
+  ctx.status = 204
   await next()
 }

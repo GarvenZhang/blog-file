@@ -1,7 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 const webp = require('../middleware/webp')
-const config = require('../../config')
+const config = require('../auth/config')
 
 exports.upload = async function (ctx) {
   // 文件上传

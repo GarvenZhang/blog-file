@@ -17,7 +17,7 @@
   "dependencies": {
     "cross-env": "^5.1.4",
     "garven-imagemin": "^5.3.1",
-    "garven-koa-static": "^4.0.2",
+    "garven-koa-static": "^4.0.4",
     "imagemin-webp": "^4.1.0",
     "koa": "^2.5.1",
     "koa-body": "^2.5.0",

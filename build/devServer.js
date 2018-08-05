@@ -1,7 +1,7 @@
 const webpack = require('webpack')
 const WebpacDevServer = require('webpack-dev-server')
 const webpackConfig = require('./webpack.config.dev')
-const config = require('../config')
+const config = require('../server/auth/config')
 
 let app = new WebpacDevServer(webpack(webpackConfig), {
   contentBase: false,

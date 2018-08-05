@@ -15,10 +15,9 @@ const app = new Koa()
 const path = require('path')
 const https = require('https')
 
-const config = require('./config.js')
+const config = require('./server/auth/config.js')
 const route = require('./server/routes/router')
 const router = new Router()
-const isDev = process.env.NODE_ENV === 'development'
 
 // === 字符编码 === //
 // === [补充: 计算机中数据最终以二进制值存储, 每个二进制位(bit)有0和1两种状态, 一字节 = 8位 = 2 ^ 8 = 256种状态, 即 00000000 到 11111111] === //
@@ -59,11 +58,11 @@ app.use(serve(staticPath, {
 
 // 获取上传文件
 
-// 改koa-static/index.js
+// 改koa-static/index.jsx
 // Line 42:
 // let webpToOtherTypePath = ''
 //
-// if (/\.png|\.jpeg|\.jpg|\.webp/i.test(ctx.url)) {
+// if (/\.png|\.jpeg|\.jpg|\.webp/i.prod(ctx.url)) {
 //
 //   const supportWebp = ctx.cookies.get('supportWebp')
 //
@@ -76,7 +75,11 @@ app.use(serve(staticPath, {
 // done = await send(ctx, webpToOtherTypePath || ctx.path, opts)
 
 const uploadPath = path.resolve(__dirname, './server/upload')
-app.use(serve(uploadPath, {}))
+app.use(serve(uploadPath, {
+  setHeaders: function (res, path, stats) {
+    console.log(path)
+  }
+}))
 
 // log requests
 app.use(logger())
@@ -84,7 +87,7 @@ app.use(logger())
 app.use(koaBody({ multipart: true }))
 
 // mysql
-global.connectionPool = mysql.createPool(isDev ? config.DEV_dbConfig : config.PROD_dbConfig)
+global.connectionPool = mysql.createPool(config.ISDEV ? config.DEV_dbConfig : config.PROD_dbConfig)
 
 app.use(async function mysqlConnection (ctx, next) {
   try {
@@ -107,14 +110,18 @@ app.use(router.allowedMethods())
 
 // listen
 
-if (isDev) {
+if (config.ISDEV) {
   module.exports = app.listen(config.dev.serverPort, function (err) {
-    err && console.log(err)
+    if (err) {
+      return console.error(err)
+    }
     console.log(`listening on port ${config.dev.serverPort}`)
   })
 } else {
   module.exports = app.listen(config.prod.port, function (err) {
-    err && console.log(err)
+    if (err) {
+      return console.error(err)
+    }
     console.log(`listening on port ${config.prod.port}`)
   })
 

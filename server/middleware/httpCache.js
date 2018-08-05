@@ -38,7 +38,7 @@ Etag: xxx
 
 const fs = require('fs')
 const path = require('path')
-const config = require('../../config')
+const config = require('../auth/config')
 
 const imgCache = async (ctx, next) => {
   const maxAge = config.maxAge

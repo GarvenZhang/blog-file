@@ -6,6 +6,6 @@ node_modules/
 server/upload/*
 
 ## 安全
-config.js
-1_file.hellojm.cn_bundle.crt
-2_file.hellojm.cn.key
+server/auth/config.js
+server/auth/1_file.hellojm.cn_bundle.crt
+server/auth/2_file.hellojm.cn.key

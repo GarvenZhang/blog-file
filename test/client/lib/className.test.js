@@ -1,6 +1,6 @@
 import { addClass, removeClass, replaceClass } from '../../../client/lib/className'
 
-describe('test/client/lib/className.test.js', function () {
+describe('prod/client/lib/className.test.js', function () {
   afterEach(function () {
     document.body.className = ''
   })

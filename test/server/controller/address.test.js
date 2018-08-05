@@ -3,7 +3,7 @@ const request = require('supertest')
 const config = require('../../../config')
 const app = require('../../../app-fileServer')
 
-describe('test/controller/address.test.js', function () {
+describe('prod/controller/address.test.js', function () {
   describe('GET /address?cb=jsonp.getAddress', function () {
     let tmp = {}
 

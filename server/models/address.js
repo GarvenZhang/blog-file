@@ -13,7 +13,7 @@ exports.getStreet = async function (id) {
     return {
       retCode: 1,
       data,
-      totalCount: data.length
+      total_count: data.length
     }
   } catch (e) {
     sqlError(e)

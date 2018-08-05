@@ -47,7 +47,7 @@ function serve (root, opts) {
           if (/\.png|\.jpeg|\.jpg|\.webp/i.test(url)) {
             const supportWebp = ctx.cookies.get('supportWebp')
 
-            if (supportWebp === 'false') {
+            if (!supportWebp) {
               webpToOtherTypePath = url.slice(0, url.indexOf('.webp'))
             }
           }

@@ -27,7 +27,7 @@
     "/"
   ],
   "_resolved": "https://registry.npmjs.org/koa-static/-/koa-static-4.0.2.tgz",
-  "_spec": "4.0.2",
+  "_spec": "4.0.4",
   "_where": "/Users/garven/codetest/realProject/myblog/fileServer",
   "bugs": {
     "url": "https://github.com/koajs/static/issues"
@@ -77,5 +77,5 @@
     "test-cov": "node --harmony ./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha",
     "test-travis": "node --harmony ./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha --report lcovonly"
   },
-  "version": "4.0.3"
+  "version": "4.0.4"
 }

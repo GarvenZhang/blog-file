@@ -66,7 +66,7 @@ export default class Validator {
           strategyArr.unshift(value)
           strategyArr.push(errMsg)
 
-          return strategies[stratety](strategyArr)
+          return strategies[stratety](...strategyArr)
         })
       })(rule)
     }
@@ -79,7 +79,6 @@ export default class Validator {
   start () {
     for (let i = 0, validatorFn; validatorFn = this.cache[i++];) {
       const errMsg = validatorFn()
-      console.log(errMsg)
       if (typeof errMsg === 'string') {
         return errMsg
       }
