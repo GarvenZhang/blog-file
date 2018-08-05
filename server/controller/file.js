@@ -14,6 +14,8 @@ exports.upload = async function (ctx) {
   reader.pipe(stream)
 
   // 存多一份webp
-  await webp.cwebp(file.path, path.resolve(config.imagePath, file.name) + '.webp', 80)
+  if (path.extname(file.name) !== '.webp') {
+    await webp.cwebp(file.path, path.resolve(config.imagePath, file.name) + '.webp', 80)
+  }
   ctx.status = 204
 }
