@@ -77,7 +77,7 @@ app.use(serve(staticPath, {
 const uploadPath = path.resolve(__dirname, './server/upload')
 app.use(serve(uploadPath, {
   setHeaders: function (res, path, stats) {
-    console.log(path)
+    res.setHeader('Accept-Ranges', 'bytes')
   }
 }))
 

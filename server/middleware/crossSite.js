@@ -15,9 +15,21 @@ const config = require('../auth/config')
 // === 2.2 正常请求: Origin / Access-Control-Allow-** === //
 
 module.exports = async function (ctx, next) {
+
   ctx.set('Access-Control-Allow-Origin', config.ACCESS_CONTROL_ALLOW_ORIGIN)
   ctx.set('Access-Control-Allow-Method', config.ACCESS_CONTROL_ALLOW_METHOD)
   ctx.set('Access-Control-Allow-Headers', config.ACCESS_CONTROL_ALLOW_HEADERS)
-  ctx.status = 204
+
+  // 请求方法限制
+  const methodWhiteList = config.ACCESS_CONTROL_ALLOW_METHOD.toLocaleLowerCase().split(',')
+  const method = ctx.method.toLocaleLowerCase()
+  if (!methodWhiteList.includes(method)) {
+    ctx.status = 405
+    ctx.body = {
+      message: '只允许' + methodWhiteList.join(' ,')
+    }
+    return
+  }
+
   await next()
 }
