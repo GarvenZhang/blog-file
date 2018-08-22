@@ -34,9 +34,6 @@ exports.upload = async function (ctx) {
   const isPng = config.PNG_SIGN.every((item, i) => buf[i] === item)
   const isWebp = config.WEBP_SIGN.every((item, i) => buf[i] === item)
 
-
-
-
   const reader = fs.createReadStream(file.path)
 
   // 原图
